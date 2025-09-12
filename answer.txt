@@ -1,0 +1,4 @@
+Q: Câu lệnh để cài đặt email và name là gì?
+A: 
+    Name: git config --global user.name "PW - Thao Ly"
+    Email: git config --global user.email "iris.thao.lee@gmail.com"
