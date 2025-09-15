@@ -1,0 +1,10 @@
+1. 
+    git init: Initialize a new local Git repository in the current folder
+    git add <file_name>: Stage a file for commit
+    git add .: Stage all changes
+    git commit -m “message”: Save (commit) the staged changes
+
+2.
+    Working directory: file 2, file 3
+    Staging area:
+    Repository: file 1
