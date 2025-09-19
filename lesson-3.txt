@@ -1,0 +1,84 @@
+//Ex-1
+git commit --amend: Undo the lastest commit
+git commit --amend -m”<message>”: Undo committed message
+git restore --staged <file>: Move a file from staging area back to working directory
+git reset HEAD~1: Move a file from repository back to working directory (un-commit)
+
+//Ex-2
+Create 3 files: file1, file2, file3
+WD: file1, file2, file3
+Staging: (empty)
+Repository: (no repo/commit yet)
+---------------------------------------
+git init
+WD: file1, file2, file3
+Staging: (empty)
+Repository: repo initialized, no commits yet
+----------------------------------------
+git commit -m "init project"
+Nothing staged → nothing to commit
+WD: file1, file2, file3
+Staging: (empty)
+Repository: still no commits
+----------------------------------------
+git add file1
+WD: file2, file3
+Staging: file1
+Repository: still empty
+----------------------------------------
+git commit -m "add file"
+WD: file2, file3
+Staging: (empty)
+Repository: file1
+----------------------------------------
+git add .
+WD: (empty)
+Staging: file2, file3
+Repository: file1
+----------------------------------------
+git restore --staged file2
+WD: file2
+Staging: file3
+Repository: file1
+----------------------------------------
+git commit -m "add all files"
+WD: file2
+Staging: (empty)
+Repository: file1, file3
+----------------------------------------
+git reset HEAD~1
+WD: file2, file3
+Staging: (empty)
+Repository:file1
+(Commit “add all files” has been removed from branch history)
+
+//Ex-3
+git init
+WD: (empty folder)
+Staging: (empty)
+Repo: (just initialized, no commits)
+----------------------------------------
+Create files file1.txt, file2.txt, oops/file3.txt
+WD: file1.txt, file2.txt, oops/file3.txt
+Staging: (empty)
+Repo: (no commits yet)
+----------------------------------------
+Create .gitignore with 2 lines
+file1.txt
+oops/
+WD: file1.txt, file2.txt, oops/file3.txt, .gitignore
+Staging: (empty)
+Repo: (no commits yet)
+----------------------------------------
+git add .
+Git will add all files except those ignored by .gitignore.
+.gitignore ignores file1.txt and the entire oops/ folder.
+WD: file1.txt, oops/file3.txt,
+Staging: file2.txt, .gitignore
+Repo: (no commits yet)
+----------------------------------------
+git commit -m "init project"
+Creates the first commit with everything in staging.
+WD: file1.txt, oops/file3.txt
+Staging: (empty)
+Repo: file2.txt, .gitignore
